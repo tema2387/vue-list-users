@@ -57,10 +57,6 @@ export default {
       type: String,
       default: ''
     },
-    value: {
-      type: String,
-      default: ''
-    },
     error: {
       type: Boolean,
       default: false
@@ -82,6 +78,9 @@ export default {
   &__label {
     color: var(--secondary-text);
     margin-bottom: 5px;
+    cursor: pointer;
+    max-width: max-content;
+    width: 100%;
   }
 
   &__field {

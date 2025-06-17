@@ -1,6 +1,9 @@
 <template>
   <div class="select" v-click-outside="closeList">
-    <label class="select__label text-14">
+    <label
+      :for="id"
+      class="select__label text-14"
+    >
       {{ label }}
     </label>
     <div
@@ -24,6 +27,13 @@
       </div>
     </div>
     <div v-if="selectOpen" class="select__list">
+      <div
+        v-if="options.length > 0"
+        class="select__option"
+        @click.stop="resetSelect"
+      >
+        Не выбрано
+      </div>
       <div
         v-for="option in options"
         :key="option.id"
@@ -54,9 +64,9 @@ export default {
   },
   data() {
     return {
-      selectedValue: '',
+      selectedValue: null,
       selectOpen: false,
-      displayValue: ''
+      displayValue: null
     }
   },
   props: {
@@ -75,10 +85,6 @@ export default {
     options: {
       type: Array,
       default: () => []
-    },
-    value: {
-      type: Number,
-      default: null
     }
   },
   methods: {
@@ -91,7 +97,12 @@ export default {
     selectOption(option) {
       this.selectedValue = option.id
       this.displayValue = `#${option.id} ${option.name}`
-      this.$emit('input', option.id)
+      this.$emit('input', this.selectedValue)
+      this.closeList()
+    },
+    resetSelect() {
+      this.selectedValue = null
+      this.displayValue = null
       this.closeList()
     }
   }
@@ -107,6 +118,9 @@ export default {
   &__label {
     color: var(--secondary-text);
     margin-bottom: 5px;
+    cursor: pointer;
+    max-width: max-content;
+    width: 100%;
   }
 
   &__field-wrapper {
@@ -115,7 +129,7 @@ export default {
 
   &__field {
     width: 100%;
-    padding: 15px;
+    padding: 15px 35px 15px 15px;
     border: 1px solid var(--input-border);
     outline: none;
     border-radius: 10px;
