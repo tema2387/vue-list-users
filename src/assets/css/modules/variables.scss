@@ -1,0 +1,24 @@
+:root {
+  // Colors
+  --purple: #774AD9;
+  --red: #D94145;
+  --white: #FFFFFF;
+
+  // Text
+  --main-text: #433C50;
+  --secondary-text: #686A6E;
+
+  // Background
+  --body-bg: #F4F5FA;
+  --table-bg: #F6F7FB;
+
+  // Opacity
+  --purple-opacity: rgba(119, 74, 217, 0.8);
+  --black-opacity: rgba(0, 0, 0, 0.5);
+
+  // Border
+  --input-border: #D1CFD4;
+
+  // Shadow
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
